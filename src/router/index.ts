@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+import HomeView from '../views/home.vue'
+import LoginView from '../views/login.vue'
+import RegisterView from '../views/register.vue'
+import ProfileView from '../views/profile.vue'
+import ForumView from '../views/forum.vue'
+import NewThreadView from '../views/new_thread.vue'
+import ThreadView from '../views/thread.vue'
 
 Vue.use(VueRouter)
 
@@ -11,19 +18,57 @@ const routes: Array<RouteConfig> = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login/',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/login/register/',
+    name: 'register',
+    component: RegisterView,
+  },
+  {
+    path: '/users/:user_id/',
+    name: 'users',
+    props: true,
+    component: ProfileView
+  },
+  {
+    path: '/forums/:forum_id/',
+    name: 'forum',
+    props: true,
+    component: ForumView
+  },
+  {
+    path: '/forums/:forum_id/new_thread/',
+    name: 'newThread',
+    props: true,
+    component: NewThreadView
+  },
+  {
+    path: '/forums/:forum_id/threads/:thread_id/',
+    name: 'thread',
+    props: true,
+    component: ThreadView
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPos) {
+    console.log('scrollBehavior called')
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        behavior: 'smooth',
+        offset: {x: 0, y: 80}
+      }
+    } else if (savedPos) {
+      return savedPos
+    }
+  }
 })
 
 export default router
