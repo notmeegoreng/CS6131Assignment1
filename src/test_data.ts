@@ -93,3 +93,38 @@ export const forum_id_map = {
         name: 'P'
     },
 }
+
+export const threads = [
+    {
+        header: 'Pinned Threads', covers: [
+            {
+                avatar: {name: 'M', color: 'blue'},
+                title: 'On Moderation',
+                description: [ // generate long description
+                    'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth',
+                    'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth',
+                    'eighteenth', 'nineteenth', 'twentieth'
+                ].join('ly, how dare you. ')+ 'ly, how dare you.',
+                to: 'a/threads/b'
+            },
+            {
+                avatar: {name: 'Ww', color: 'orange'},
+                title: 'BAA BAA',
+                description: 'black sheep',
+                to: 'a/threads/ccc'}
+        ]
+    },
+    {
+        header: 'Normal Threads', covers: [
+            {
+                title: 'OO',
+                description: 'woah',
+                to: 'a/threads/d'
+            },
+            {
+                title:'Moose',
+                description: 'craze',
+                to: 'a/threads/ee'
+            }
+        ]
+    }]

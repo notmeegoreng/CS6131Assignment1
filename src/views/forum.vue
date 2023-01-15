@@ -22,7 +22,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import SectionedHeadersComponent from "@/components/sectioned_headers.vue";
-import {forum_id_map} from "@/test_data";
+import {forum_id_map, threads} from "@/test_data";
 export default Vue.extend({
   name: 'Forum',
   props: {
@@ -47,40 +47,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      threads: [
-        {
-          header: 'Pinned Threads', covers: [
-            {
-              avatar: {name: 'M', color: 'blue'},
-              title: 'On Moderation',
-              description: [ // generate long description
-                'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth',
-                'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth',
-                'eighteenth', 'nineteenth', 'twentieth'
-              ].join('ly, how dare you. ')+ 'ly, how dare you.',
-              to: 'a/threads/b'
-            },
-            {
-              avatar: {name: 'Ww', color: 'orange'},
-              title: 'BAA BAA',
-              description: 'black sheep',
-              to: 'a/threads/ccc'}
-          ]
-        },
-        {
-          header: 'Normal Threads', covers: [
-            {
-              title: 'OO',
-              description: 'woah',
-              to: 'a/threads/d'
-            },
-            {
-              title:'Moose',
-              description: 'craze',
-              to: 'a/threads/ee'
-            }
-          ]
-        }]
+      threads: threads
     }
   }
 })
