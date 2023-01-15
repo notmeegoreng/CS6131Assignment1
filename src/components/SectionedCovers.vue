@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="px-8">
+  <v-container fluid>
     <div v-for="(section, i) in sections" :key="i" >
       <span :id="section.header.toLowerCase().replaceAll(' ', '-')" />
       <v-card class="mb-8 rounded-lg">

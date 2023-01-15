@@ -1,33 +1,29 @@
 <template>
-  <v-container fluid class="">
-    <!-- add forum info here -->
-    <v-breadcrumbs large :items="prev_pages">
-      <template v-slot:divider>
-        <v-icon>mdi-menu-right</v-icon>
-      </template>
-      <template v-slot:item="{ item }">
-        <v-breadcrumbs-item v-if="item.last" :to="item.to"></v-breadcrumbs-item>
-        <v-breadcrumbs-item v-else :to="item.to">{{ item.text }}</v-breadcrumbs-item>
-      </template>
-    </v-breadcrumbs>
-
-    <div class="text-h4">{{ prev_pages[prev_pages.length - 1].text }}</div>
-
-    <SectionedHeadersComponent :sections="threads"/>
+  <v-container fluid class="px-8">
+    <TitledBreadcrumbs :prev_pages="prev_pages"/>
+    <SectionedCoversComponent :sections="threads"/>
   </v-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import SectionedHeadersComponent from "@/components/sectioned_headers.vue";
+import SectionedCoversComponent from "@/components/SectionedCovers.vue";
 import {forum_id_map, threads} from "@/test_data";
+import TitledBreadcrumbs from "@/components/TitledBreadcrumbs.vue";
+
 export default Vue.extend({
   name: 'Forum',
   props: {
     forum_id: String
   },
   components: {
-    SectionedHeadersComponent
+    TitledBreadcrumbs,
+    SectionedCoversComponent
+  },
+  data() {
+    return {
+      threads
+    }
   },
   computed: {
     prev_pages() {
@@ -43,11 +39,6 @@ export default Vue.extend({
         },
         {text: forum.name, last: true}
       ]
-    }
-  },
-  data() {
-    return {
-      threads
     }
   }
 })

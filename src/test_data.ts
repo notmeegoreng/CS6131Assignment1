@@ -105,13 +105,13 @@ export const threads = [
                     'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth',
                     'eighteenth', 'nineteenth', 'twentieth'
                 ].join('ly, how dare you. ')+ 'ly, how dare you.',
-                to: 'a/threads/b'
+                to: 'ab/threads/b'
             },
             {
                 avatar: {name: 'Ww', color: 'orange'},
                 title: 'BAA BAA',
                 description: 'black sheep',
-                to: 'a/threads/ccc'}
+                to: 'ab/threads/ccc'}
         ]
     },
     {
@@ -119,12 +119,12 @@ export const threads = [
             {
                 title: 'OO',
                 description: 'woah',
-                to: 'a/threads/d'
+                to: 'ab/threads/d'
             },
             {
                 title:'Moose',
                 description: 'craze',
-                to: 'a/threads/ee'
+                to: 'ab/threads/ee'
             }
         ]
     }]
