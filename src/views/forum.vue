@@ -61,6 +61,7 @@ export default Vue.extend({
               to: 'a/threads/b'
             },
             {
+              avatar: {name: 'Ww', color: 'orange'},
               title: 'BAA BAA',
               description: 'black sheep',
               to: 'a/threads/ccc'}

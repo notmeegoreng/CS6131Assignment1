@@ -1,7 +1,6 @@
 <template>
   <v-container fluid class="px-8">
     <!-- add home info here -->
-    <v-btn to="#filled">test</v-btn>
     <SectionedHeadersComponent :sections="all_forums"/>
   </v-container>
 </template>

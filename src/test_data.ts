@@ -1,7 +1,6 @@
 export const forums = [
     {header: 'Top Forums', covers: [
         {
-            avatar: {name: 'Ww', color: 'orange'},
             title: 'On the concept of thermodynamics',
             description: 'Discuss the heat death of the universe here!',
             to: 'forums/ab'
