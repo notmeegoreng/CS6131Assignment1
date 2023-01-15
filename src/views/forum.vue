@@ -1,11 +1,20 @@
 <template>
   <v-container fluid class="pl-4">
     <!-- add forum info here -->
+    <v-row>
     <v-breadcrumbs large :items="prev_pages">
       <template v-slot:divider>
         <v-icon>mdi-menu-right</v-icon>
       </template>
+      <template v-slot:item="{ item }">
+        <v-breadcrumbs-item v-if="item.last" :to="item.to"></v-breadcrumbs-item>
+        <v-breadcrumbs-item v-else :to="item.to">{{ item.text }}</v-breadcrumbs-item>
+      </template>
     </v-breadcrumbs>
+    </v-row>
+    <v-row>
+      <div class="text-h3">{{ prev_pages[-1].text }}</div>
+    </v-row>
     <SectionedHeadersComponent :sections="threads"/>
   </v-container>
 </template>
@@ -33,7 +42,7 @@ export default Vue.extend({
         {
           text: 'Home',
           to: {name: 'home', hash: `#${forum.section.toLowerCase().replaceAll(' ', '-')}`}},
-        {text: forum.name, disabled: true}]
+        {text: forum.name, last: true}]
     }
   },
   data() {

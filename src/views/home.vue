@@ -18,7 +18,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      all_forums: Object.values(forums)
+      all_forums: forums
     }
   },
   computed: {
