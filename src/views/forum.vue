@@ -1,7 +1,6 @@
 <template>
-  <v-container fluid class="pl-4">
+  <v-container fluid class="">
     <!-- add forum info here -->
-    <v-row>
     <v-breadcrumbs large :items="prev_pages">
       <template v-slot:divider>
         <v-icon>mdi-menu-right</v-icon>
@@ -11,10 +10,9 @@
         <v-breadcrumbs-item v-else :to="item.to">{{ item.text }}</v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>
-    </v-row>
-    <v-row>
-      <div class="text-h3">{{ prev_pages[-1].text }}</div>
-    </v-row>
+
+    <div class="text-h4">{{ prev_pages[prev_pages.length - 1].text }}</div>
+
     <SectionedHeadersComponent :sections="threads"/>
   </v-container>
 </template>
@@ -41,13 +39,15 @@ export default Vue.extend({
       return [
         {
           text: 'Home',
-          to: {name: 'home', hash: `#${forum.section.toLowerCase().replaceAll(' ', '-')}`}},
-        {text: forum.name, last: true}]
+          to: {name: 'home', hash: `#${forum.section.toLowerCase().replaceAll(' ', '-')}`}
+        },
+        {text: forum.name, last: true}
+      ]
     }
   },
   data() {
     return {
-      threads: threads
+      threads
     }
   }
 })
