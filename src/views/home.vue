@@ -10,6 +10,7 @@ import Vue from 'vue'
 
 import SectionedCoversComponent from "@/components/SectionedCovers.vue";
 import {forums} from "@/test_data";
+
 export default Vue.extend({
   name: 'Thread',
   components: {
@@ -25,4 +26,3 @@ export default Vue.extend({
   }
 })
 </script>
-  

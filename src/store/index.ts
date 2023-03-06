@@ -1,5 +1,13 @@
-import {ref} from "vue";
+import {reactive} from "vue";
 
-export const user_id = ref<null | string>(null)
+interface Store {
+    user_id: string,
+    spoiler_hide: boolean,
+}
 
-export const spoiler_hide = ref<boolean>(false)
+const store: Store = reactive({
+    user_id: "",
+    spoiler_hide: true,
+})
+
+export default store

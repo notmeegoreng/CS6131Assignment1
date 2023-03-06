@@ -16,7 +16,7 @@ import Profile from '@/models/profile';
 import PostComponent from '@/components/Post.vue'
 import TitledBreadcrumbs from "@/components/TitledBreadcrumbs.vue";
 import {forum_id_map} from "@/test_data";
-import {spoiler_hide} from "@/store";
+import store from "@/store";
 
 export default Vue.extend({
   name: 'Thread',
@@ -60,6 +60,7 @@ export default Vue.extend({
     }
   },
   methods: {
+
     hide_spoilers() {
       Array.from(document.querySelectorAll('.spoiler')).forEach(spoiler => {
         spoiler.classList.remove('opened-spoiler')
@@ -67,10 +68,10 @@ export default Vue.extend({
     }
   },
   created() {
-    spoiler_hide.value = true
+    store.spoiler_hide = true
   },
   beforeDestroy() {
-    spoiler_hide.value = false
+    store.spoiler_hide = false
   }
 })
 </script>

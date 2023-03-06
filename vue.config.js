@@ -7,5 +7,5 @@ export default defineConfig({
   devServer: {
     port: 1212
   },
-  publicPath: process.env.NODE_ENV === 'production' ? '/CS6131Assignment1/' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/CS6131Assignment1/' : '/',
 })

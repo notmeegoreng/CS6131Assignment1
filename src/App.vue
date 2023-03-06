@@ -8,8 +8,8 @@
         <v-btn text class="mx-2" :to="{name: 'latest'}">Latest</v-btn>
         <v-btn text class="mx-2" :to="{name: 'all_users'}" exact>Users</v-btn>
         <v-layout align-center justify-end class="mx-4">
-          <template v-if="user_id">
-            <v-btn text class="mx-2" :to="{name: 'users', params: {user_id: user_id}}">Profile</v-btn>
+          <template v-if="store.user_id">
+            <v-btn text class="mx-2" :to="{name: 'users', params: {user_id: store.user_id}}">Profile</v-btn>
             <v-dialog v-model="logout_dialog" width="400">
               <template v-slot:activator="{on}">
                 <v-btn text class="ml-2 mr-4" v-on="on">Logout</v-btn>
@@ -41,7 +41,7 @@
                   {{(dark ? 'Dark' : 'Light') + ' Mode'}}
                 </v-list-item-content>
               </v-list-item>
-              <v-list-item v-if="spoiler_hide">
+              <v-list-item v-if="store.spoiler_hide">
                 <v-list-item-content>
                   <v-btn>
                     Hide Spoilers
@@ -50,7 +50,7 @@
               </v-list-item>
             </v-list>
           </v-menu>
-          <v-menu class="" :close-on-content-click="false" offset-y style="opacity: 1">
+          <v-menu class="" v-model="search_dialog" :close-on-content-click="false" offset-y style="opacity: 1">
             <template v-slot:activator="{on}">
               <v-btn class="mx-4" icon v-on="on">
                 <v-icon>mdi-magnify</v-icon>
@@ -79,34 +79,37 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {spoiler_hide, user_id} from "@/store";
+import store from "@/store";
 
 export default Vue.extend({
   name: 'App',
-
   data() {
     return {
       logout_dialog: false,
+      search_dialog: false,
       dark: true,
       search_text: ''
     }
   },
   methods: {
-    toggleTheme() {
-      this.dark = !this.dark
+    async toggleTheme() {
+      const self = await this
+      self.dark = !self.dark
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
     },
-    logout() {
-      this.logout_dialog = false
-      user_id.value = null
+    async logout() {
+      (await this).logout_dialog = false
+      store.user_id = ""
     },
-    on_enter() {
-      console.log(this.search_text)
-      this.$router.push({name: 'search', params: {query: this.search_text}})
+    async on_enter() {
+      const self = await this
+      self.search_dialog = false
+      console.log(self.search_text)
+      await this.$router.push({name: 'search', params: {query: self.search_text}})
     }
   },
   setup() {
-    return { user_id, spoiler_hide }
+    return {store}
   }
 });
 </script>

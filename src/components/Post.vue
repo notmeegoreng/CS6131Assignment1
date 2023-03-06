@@ -37,11 +37,12 @@ export default Vue.extend({
       }
   },
   mounted() {
-    if ((this as any).not_done) {
-      (this as any).not_done = false;
+    let self = this as Vue & {not_done: boolean};
+    if (self.not_done) {
+      self.not_done = false;
 
       Array.from(document.querySelectorAll('.spoiler')).forEach(spoiler => {
-        spoiler.addEventListener("click", _ => {
+        spoiler.addEventListener("click", () => {
           spoiler.classList.add('opened-spoiler')
         })
       }, false)

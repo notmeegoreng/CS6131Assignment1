@@ -8,9 +8,9 @@ export const forums = [
         {
             title: 'B',
             description: 'BBB',
-            to: 'forums/bb'}
-        ]
-    },
+            to: 'forums/bb'
+        }
+        ]},
     {
         header: 'Vertical Forums', covers: []
     },

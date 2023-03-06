@@ -23,7 +23,7 @@
   
 <script lang="ts">
 import Vue from 'vue'
-import {user_id} from "@/store";
+import store from "@/store";
 
 export default Vue.extend({
   name: 'Thread',
@@ -41,7 +41,7 @@ export default Vue.extend({
     on_login() {
       if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
         // verify
-        user_id.value = "testID"
+        store.user_id = "testID"
         this.$router.push({name: 'home'})
       }
       // verify
